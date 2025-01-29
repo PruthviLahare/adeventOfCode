@@ -11,10 +11,10 @@ const masses = [
   83808, 125949, 147277, 144448, 112673, 136408, 75776, 141630, 116821, 113349,
 ];
 
-const form = (mass) => Math.floor(mass / 3 - 2);
+const calculateFule = (mass) => Math.floor(mass / 3 - 2);
 
 const sum = (init, num) => init + num;
 
-const a = masses.map(form).reduce(sum, 0);
+const fuleRequired = masses.map(calculateFule).reduce(sum, 0);
 
-console.log(a);
+console.log(fuleRequired);
