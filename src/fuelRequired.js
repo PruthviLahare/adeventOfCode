@@ -11,10 +11,23 @@ const masses = [
   83808, 125949, 147277, 144448, 112673, 136408, 75776, 141630, 116821, 113349,
 ];
 
-const calculateFule = (mass) => Math.floor(mass / 3 - 2);
+const calculateFule = (mass) => {
+  let p = mass;
+  const arr = [];
+
+  while (p > 0) {
+    p = Math.floor(p / 3 - 2);
+
+    const valToPuch = p < 0 ? 0 : p;
+
+    arr.push(valToPuch);
+  }
+
+  return arr;
+};
 
 const sum = (init, num) => init + num;
 
-const fuleRequired = masses.map(calculateFule).reduce(sum, 0);
+const fuleRequired = masses.flatMap(calculateFule).reduce(sum, 0);
 
 console.log(fuleRequired);
