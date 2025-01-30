@@ -12,15 +12,15 @@ const masses = [
 ];
 
 const calculateFule = (mass) => {
-  let p = mass;
+  let fuleRequired = mass;
   const arr = [];
 
-  while (p > 0) {
-    p = Math.floor(p / 3 - 2);
+  while (fuleRequired > 0) {
+    fuleRequired = Math.floor(fuleRequired / 3 - 2);
 
-    const valToPuch = p < 0 ? 0 : p;
+    const valToPush = fuleRequired < 0 ? 0 : fuleRequired;
 
-    arr.push(valToPuch);
+    arr.push(valToPush);
   }
 
   return arr;
