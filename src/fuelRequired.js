@@ -12,13 +12,13 @@ const masses = [
 ];
 
 const calculateFule = (mass) => {
-  let fuleRequired = mass;
+  let fuelRequired = mass;
   const arr = [];
 
-  while (fuleRequired > 0) {
-    fuleRequired = Math.floor(fuleRequired / 3 - 2);
+  while (fuelRequired > 0) {
+    fuelRequired = Math.floor(fuelRequired / 3 - 2);
 
-    const valToPush = fuleRequired < 0 ? 0 : fuleRequired;
+    const valToPush = fuelRequired < 0 ? 0 : fuelRequired;
 
     arr.push(valToPush);
   }
