@@ -1,21 +1,22 @@
-const add = (list, pos) => {
-  const posToStore = list[pos + 3];
+const add = (memory, pos) => {
+  const outputIndex = memory[pos + 3];
 
-  list[posToStore] = list[list[pos + 1]] + list[list[pos + 2]];
-
-  return (pos += 4);
-};
-
-const mul = (list, pos) => {
-  const posToStore = list[pos + 3];
-
-  list[posToStore] = list[list[pos + 1]] * list[list[pos + 2]];
+  memory[outputIndex] = memory[memory[pos + 1]] + memory[memory[pos + 2]];
 
   return (pos += 4);
 };
 
-const halt = (list) => {
-  console.log(list);
+const mul = (memory, pos) => {
+  const outputIndex = memory[pos + 3];
+
+  memory[outputIndex] = memory[memory[pos + 1]] * memory[memory[pos + 2]];
+
+  return (pos += 4);
+};
+
+const halt = (memory) => {
+  console.log(memory);
+
   Deno.exit();
 };
 
@@ -25,11 +26,11 @@ const instructions = {
   99: halt,
 };
 
-const main = (list) => {
+const main = (memory) => {
   let i = 0;
 
-  while (i < list.length) {
-    i = instructions[list[i]](list, i);
+  while (i < memory.length) {
+    i = instructions[memory[i]](memory, i);
   }
 };
 
