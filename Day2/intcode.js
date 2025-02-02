@@ -1,37 +1,25 @@
 const add = (memory, pos) => {
-  const outputIndex = memory[pos + 3];
-
-  memory[outputIndex] = memory[memory[pos + 1]] + memory[memory[pos + 2]];
-
-  return (pos += 4);
+  return memory[memory[pos + 1]] + memory[memory[pos + 2]];
 };
 
 const mul = (memory, pos) => {
-  const outputIndex = memory[pos + 3];
-
-  memory[outputIndex] = memory[memory[pos + 1]] * memory[memory[pos + 2]];
-
-  return (pos += 4);
-};
-
-const halt = (memory) => {
-  console.log(memory);
-
-  Deno.exit();
+  return memory[memory[pos + 1]] * memory[memory[pos + 2]];
 };
 
 const instructions = {
   1: add,
   2: mul,
-  99: halt,
 };
 
 const main = (memory) => {
   let i = 0;
 
-  while (i < memory.length) {
-    i = instructions[memory[i]](memory, i);
+  while (memory[i] !== 99) {
+    memory[memory[i + 3]] = instructions[memory[i]](memory, i);
+    i += 4;
   }
+
+  console.log(memory);
 };
 
 // const list = [1, 1, 1, 1, 99];
